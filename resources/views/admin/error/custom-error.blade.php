@@ -68,7 +68,7 @@
             @endif
             @if(Session::get('additional_message') == 'logout')
                 <div class="button-place">
-                    <a href="{{ url('admin/logout') }}" class="btn btn-default btn-lg waves-effect">GO TO HOMEPAGE</a>
+                    <a href="{{ url('admin/logout') }}" class="btn btn-default btn-lg waves-effect">LOG OUT</a>
                 </div>
             @else
                 <div class="button-place">
