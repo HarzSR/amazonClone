@@ -133,7 +133,11 @@ class AdminController extends Controller
             }
             elseif(Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => 0]))
             {
-                Session::put('additional_message', 'logout');
+                if (Auth::guard('admin')->user()->type == "vendor")
+                {
+                    Session::put('additional_message', 'logout');
+                    return redirect('/admin/error/201')->with('error_message', 'User Disabled. Please contact Administrator.');
+                }
                 return redirect('/admin/error/201')->with('error_message', 'User Disabled. Opening Dashboard with Limited Privilage.');
             }
             else
